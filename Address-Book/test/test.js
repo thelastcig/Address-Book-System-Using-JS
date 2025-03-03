@@ -23,6 +23,12 @@ try {
     console.error("Error:", error.message);
 }
 
+console.log("\nSorting Contacts by City:");
+console.log(addressBook.sortByField("city"));
 
-console.log("\nSorting Contacts Alphabetically by Name:");
-console.log(addressBook.sortByName());
+console.log("\nSorting Contacts by State:");
+console.log(addressBook.sortByField("state"));
+
+
+console.log("\nSorting Contacts by Zip:");
+console.log(addressBook.sortByField("zip"));

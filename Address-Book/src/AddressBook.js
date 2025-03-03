@@ -57,7 +57,7 @@ class AddressBook {
     }
 
     countContacts() {
-        return this.contacts.reduce((count) => count + 1, 0);
+        return this.contacts.length;
     }
 
     searchByCityOrState(location) {
@@ -85,8 +85,13 @@ class AddressBook {
         }, {});
     }
 
-    sortByName() {
-        return this.contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
+    sortByField(field) {
+        const validFields = ["city", "state", "zip"];
+        if (!validFields.includes(field)) {
+            throw new Error(`Invalid field. Sort by 'city', 'state', or 'zip' only.`);
+        }
+
+        return this.contacts.slice().sort((a, b) => a[field].localeCompare(b[field]));
     }
 }
 
