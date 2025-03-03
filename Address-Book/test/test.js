@@ -1,9 +1,9 @@
-const Contact = require("../src/Contact.js");
-const AddressBook = require("../src/AddressBook.js");
+const Contact = require("../src/Contact");
+const AddressBook = require("../src/AddressBook");
 
 let addressBook = new AddressBook();
 
-console.log("\nAdding Valid Contacts to Address Book:");
+console.log("\n✅ Adding Valid Contacts to Address Book:");
 try {
     let contact1 = new Contact("Sonu", "Sharma", "Indrapuri", "Bhopal", "Madhya Pradesh", "123456", "9876543210", "sonu.sharma@example.com");
     addressBook.addContact(contact1);
@@ -18,10 +18,22 @@ try {
 }
 
 
-console.log("\nTesting Invalid Contact (Should Fail):");
+console.log("\nEditing Contact:");
 try {
-    let invalidContact = new Contact("Jo", "S", "St", "NY", "US", "12345", "98765", "invalid@");
-    addressBook.addContact(invalidContact);
+    let updatedContact = new Contact("Sonu", "Sharma", "New Indrapuri", "Bhopal", "Madhya Pradesh", "123456", "9876543210", "sonu.new@example.com");
+    addressBook.editContact("Sonu", "Sharma", updatedContact);
+
+    console.log("\nContacts After Editing:");
+    console.log(addressBook.getAllContacts());
+} catch (error) {
+    console.error("Error:", error.message);
+}
+
+
+console.log("\nTesting Editing Non-Existent Contact:");
+try {
+    let updatedContact = new Contact("Random", "Person", "Street", "City", "State", "123456", "9876543210", "random@example.com");
+    addressBook.editContact("Random", "Person", updatedContact);
 } catch (error) {
     console.error("Expected Error:", error.message);
 }
