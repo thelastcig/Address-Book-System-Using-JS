@@ -23,9 +23,6 @@ try {
     console.error("Error:", error.message);
 }
 
-console.log("\nCounting Contacts by City:");
-console.log(addressBook.countByCityOrState("city"));
 
-
-console.log("\nCounting Contacts by State:");
-console.log(addressBook.countByCityOrState("state"));
+console.log("\nSorting Contacts Alphabetically by Name:");
+console.log(addressBook.sortByName());

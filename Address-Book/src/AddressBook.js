@@ -84,6 +84,10 @@ class AddressBook {
             return result;
         }, {});
     }
+
+    sortByName() {
+        return this.contacts.slice().sort((a, b) => a.firstName.localeCompare(b.firstName));
+    }
 }
 
 module.exports = AddressBook;
