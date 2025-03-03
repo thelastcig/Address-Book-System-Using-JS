@@ -32,7 +32,20 @@ class AddressBook {
         }
 
         this.contacts[index] = updatedContact;
-        console.log(`✅ Contact ${firstName} ${lastName} updated successfully.`);
+        console.log(`Contact ${firstName} ${lastName} updated successfully.`);
+    }
+
+    deleteContact(firstName, lastName) {
+        let index = this.contacts.findIndex(
+            (contact) => contact.firstName === firstName && contact.lastName === lastName
+        );
+
+        if (index === -1) {
+            throw new Error(`Contact ${firstName} ${lastName} not found.`);
+        }
+
+        this.contacts.splice(index, 1);
+        console.log(`Contact ${firstName} ${lastName} deleted successfully.`);
     }
 }
 

@@ -3,7 +3,7 @@ const AddressBook = require("../src/AddressBook");
 
 let addressBook = new AddressBook();
 
-console.log("\n✅ Adding Valid Contacts to Address Book:");
+console.log("\nAdding Valid Contacts to Address Book:");
 try {
     let contact1 = new Contact("Sonu", "Sharma", "Indrapuri", "Bhopal", "Madhya Pradesh", "123456", "9876543210", "sonu.sharma@example.com");
     addressBook.addContact(contact1);
@@ -18,22 +18,19 @@ try {
 }
 
 
-console.log("\nEditing Contact:");
+console.log("\nDeleting Contact:");
 try {
-    let updatedContact = new Contact("Sonu", "Sharma", "New Indrapuri", "Bhopal", "Madhya Pradesh", "123456", "9876543210", "sonu.new@example.com");
-    addressBook.editContact("Sonu", "Sharma", updatedContact);
+    addressBook.deleteContact("Sonu", "Sharma");
 
-    console.log("\nContacts After Editing:");
+    console.log("\nContacts After Deletion:");
     console.log(addressBook.getAllContacts());
 } catch (error) {
     console.error("Error:", error.message);
 }
 
-
-console.log("\nTesting Editing Non-Existent Contact:");
+console.log("\nTesting Deleting Non-Existent Contact:");
 try {
-    let updatedContact = new Contact("Random", "Person", "Street", "City", "State", "123456", "9876543210", "random@example.com");
-    addressBook.editContact("Random", "Person", updatedContact);
+    addressBook.deleteContact("Random", "Person");
 } catch (error) {
     console.error("Expected Error:", error.message);
 }
