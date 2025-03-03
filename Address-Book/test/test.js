@@ -14,17 +14,19 @@ try {
     let contact3 = new Contact("Amit", "Kumar", "Sector 5", "Bhopal", "Madhya Pradesh", "789456", "9123456780", "amit.kumar@example.com");
     addressBook.addContact(contact3);
 
+    let contact4 = new Contact("Rajesh", "Verma", "Park Street", "Patna", "Bihar", "987654", "9234567890", "rajesh.verma@example.com");
+    addressBook.addContact(contact4);
+
     console.log("\nAll Contacts:");
     console.log(addressBook.getAllContacts());
 } catch (error) {
     console.error("Error:", error.message);
 }
 
-console.log("\nSearching for contacts in Bhopal:");
-console.log(addressBook.searchByCityOrState("Bhopal"));
 
-console.log("\nSearching for contacts in Madhya Pradesh:");
-console.log(addressBook.searchByCityOrState("Madhya Pradesh"));
+console.log("\nViewing Contacts Grouped by City:");
+console.log(addressBook.viewByCityOrState("city"));
 
-console.log("\nSearching for contacts in Delhi:");
-console.log(addressBook.searchByCityOrState("Delhi"));
+
+console.log("\nViewing Contacts Grouped by State:");
+console.log(addressBook.viewByCityOrState("state"));

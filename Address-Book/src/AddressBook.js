@@ -65,6 +65,17 @@ class AddressBook {
             (contact) => contact.city === location || contact.state === location
         );
     }
+
+    viewByCityOrState(groupBy) {
+        return this.contacts.reduce((result, contact) => {
+            let key = groupBy === "city" ? contact.city : contact.state;
+            if (!result[key]) {
+                result[key] = [];
+            }
+            result[key].push(contact);
+            return result;
+        }, {});
+    }
 }
 
 module.exports = AddressBook;
