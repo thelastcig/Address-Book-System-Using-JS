@@ -76,6 +76,14 @@ class AddressBook {
             return result;
         }, {});
     }
+
+    countByCityOrState(groupBy) {
+        return this.contacts.reduce((result, contact) => {
+            let key = groupBy === "city" ? contact.city : contact.state;
+            result[key] = (result[key] || 0) + 1;
+            return result;
+        }, {});
+    }
 }
 
 module.exports = AddressBook;
