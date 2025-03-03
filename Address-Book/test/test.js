@@ -19,15 +19,11 @@ try {
     console.error("Error:", error.message);
 }
 
-
-console.log("\n🗑️ Deleting Contact:");
+// Testing Duplicate Contact Entry
+console.log("\nTesting Duplicate Contact Entry:");
 try {
-    addressBook.deleteContact("Sonu", "Sharma");
-
-    console.log("\nContacts After Deletion:");
-    console.log(addressBook.getAllContacts());
-
-    console.log("\nTotal Contacts After Deletion:", addressBook.countContacts());
+    let duplicateContact = new Contact("Sonu", "Sharma", "Indrapuri", "Bhopal", "Madhya Pradesh", "123456", "9876543210", "sonu.sharma@example.com");
+    addressBook.addContact(duplicateContact);
 } catch (error) {
-    console.error("Error:", error.message);
+    console.error("Expected Error:", error.message);
 }

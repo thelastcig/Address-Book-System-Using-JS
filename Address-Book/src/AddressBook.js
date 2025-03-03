@@ -7,8 +7,16 @@ class AddressBook {
 
     addContact(contact) {
         if (contact instanceof Contact) {
+            let isDuplicate = this.contacts.some(
+                (c) => c.firstName === contact.firstName && c.lastName === contact.lastName
+            );
+
+            if (isDuplicate) {
+                throw new Error(`Contact ${contact.firstName} ${contact.lastName} already exists.`);
+            }
+
             this.contacts.push(contact);
-            console.log("✅ Contact Added:", contact);
+            console.log("Contact Added:", contact);
         } else {
             throw new Error("Invalid Contact Type");
         }
@@ -24,15 +32,15 @@ class AddressBook {
         );
 
         if (index === -1) {
-            throw new Error(`❌ Contact ${firstName} ${lastName} not found.`);
+            throw new Error(`Contact ${firstName} ${lastName} not found.`);
         }
 
         if (!(updatedContact instanceof Contact)) {
-            throw new Error("❌ Invalid Contact Update.");
+            throw new Error("Invalid Contact Update.");
         }
 
         this.contacts[index] = updatedContact;
-        console.log(`✅ Contact ${firstName} ${lastName} updated successfully.`);
+        console.log(`Contact ${firstName} ${lastName} updated successfully.`);
     }
 
     deleteContact(firstName, lastName) {
@@ -41,11 +49,11 @@ class AddressBook {
         );
 
         if (index === -1) {
-            throw new Error(`❌ Contact ${firstName} ${lastName} not found.`);
+            throw new Error(`Contact ${firstName} ${lastName} not found.`);
         }
 
         this.contacts.splice(index, 1);
-        console.log(`🗑️ Contact ${firstName} ${lastName} deleted successfully.`);
+        console.log(`Contact ${firstName} ${lastName} deleted successfully.`);
     }
 
     countContacts() {
