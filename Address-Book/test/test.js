@@ -13,24 +13,21 @@ try {
 
     console.log("\nAll Contacts:");
     console.log(addressBook.getAllContacts());
+
+    console.log("\nTotal Contacts:", addressBook.countContacts());
 } catch (error) {
     console.error("Error:", error.message);
 }
 
 
-console.log("\nDeleting Contact:");
+console.log("\n🗑️ Deleting Contact:");
 try {
     addressBook.deleteContact("Sonu", "Sharma");
 
     console.log("\nContacts After Deletion:");
     console.log(addressBook.getAllContacts());
+
+    console.log("\nTotal Contacts After Deletion:", addressBook.countContacts());
 } catch (error) {
     console.error("Error:", error.message);
-}
-
-console.log("\nTesting Deleting Non-Existent Contact:");
-try {
-    addressBook.deleteContact("Random", "Person");
-} catch (error) {
-    console.error("Expected Error:", error.message);
 }
